@@ -1,9 +1,8 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import { Game } from '../components/Game';
 import {
   HomeContainer,
-  SelectBox,
-  SelectBoxHeader
-} from '../styles/homeStyled.js'
+} from '../styles/homeStyled.js';
 
 export default function Home() {
   return (
@@ -17,16 +16,7 @@ export default function Home() {
         crossOrigin=''
         />
       </Head>
-      <SelectBox>
-        <SelectBoxHeader>Tic Tac Toe</SelectBoxHeader>
-        <div>
-          <div>Select which symbol you'd like to be:</div>
-          <div>
-            <button>Player (X)</button>
-            <button>Player (O)</button>
-          </div>
-        </div>
-      </SelectBox>
+      <Game />
     </HomeContainer>
   )
 }
