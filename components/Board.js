@@ -1,26 +1,20 @@
+import React, { useState } from 'react';
+import { Square } from './Square';
+
 import {
     BoardContainer,
     BoardTitle,
     BoardSquaresContainer,
     ReplayButton
 } from '../styles/styled-components/StyledBoard';
-import React, { useState } from 'react';
-import { Square } from './Square';
-import { render } from '@react-three/fiber';
+
 
 export function Board() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [xIsNext, setXIsNext] = useState(true);
+    const [win, setWin] = useState(false);
+    const [tie, setTie] = useState(false);
 
-    const restart = () => {
-        return <Restart
-        onClick={() => {
-            setSquares(Array(9).fill(null));
-            setXIsNext(true);
-        }}
-        />
-    };
-    
     const handleClick = (i) => {
         const squaresClone = squares.slice();
         if (squares[i] !== null) {
@@ -32,17 +26,26 @@ export function Board() {
         setXIsNext(!xIsNext);
     }
 
+    const restart = () => {
+        return <Restart
+        onClick={() => {
+            setSquares(Array(9).fill(null));
+            setXIsNext(true);
+        }}
+        />
+    };
+
     const renderSquare = (i) => {
         return <Square
         value={squares[i]}
         onClick={() => {
-            handleClick(i) 
+        handleClick(i) 
         }}
         />;
     }
 
-    const winner = calculateWinner(squares);
     let status;
+    const winner = calculateWinner(squares);
     if (winner) {
         status = 'winner is: ' + winner;
         

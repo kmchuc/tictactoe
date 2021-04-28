@@ -6,9 +6,10 @@ export const GameContainer = styled.div`
     justify-content: center;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 `;
 
 export const GameBoard = styled.div`
-    height: 80vh;
-    width: 40vw;
+    height: 600px;
+    width: 600px;
 `;

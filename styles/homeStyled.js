@@ -8,3 +8,11 @@ export const HomeContainer = styled.div`
   height: 100vh;
   width: 100vw;
 `;
+
+export const LogoDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 15vh;
+  width: 100vw;
+  padding-top: 20px;
+`;
