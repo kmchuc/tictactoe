@@ -11,7 +11,7 @@ export const BoardContainer = styled.div`
 `;
 
 export const BoardTitle = styled.div`
-    font-size: 4em;
+    font-size: 3.75em;
     display: flex;
     justify-content: space-evenly;
     align-items: center;

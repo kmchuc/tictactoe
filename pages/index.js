@@ -16,7 +16,7 @@ export default function Home() {
         href='/fonts/Bright.otf'
         as='font'
         type='font/otf' 
-        crossorigin='anonymous'
+        crossOrigin='anonymous'
         />
       </Head>
       <LogoDiv>

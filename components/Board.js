@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Square } from './Square';
 
 import {
@@ -12,12 +12,10 @@ import {
 export function Board() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [xIsNext, setXIsNext] = useState(true);
-    const [win, setWin] = useState(false);
-    const [tie, setTie] = useState(false);
 
     const handleClick = (i) => {
         const squaresClone = squares.slice();
-        if (squares[i] !== null) {
+        if (squares[i] !== null || winner != null) {
             return;
         }
 
@@ -28,11 +26,11 @@ export function Board() {
 
     const restart = () => {
         return <Restart
-        onClick={() => {
-            setSquares(Array(9).fill(null));
-            setXIsNext(true);
-        }}
-        />
+            onClick={() => {
+                setSquares(Array(9).fill(null));
+                setXIsNext(true);
+            }
+        }/>
     };
 
     const renderSquare = (i) => {
@@ -48,9 +46,19 @@ export function Board() {
     const winner = calculateWinner(squares);
     if (winner) {
         status = 'winner is: ' + winner;
-        
+    } else if (isTie(squares)) {
+        status = "it's a tie!";
     } else {
         status = 'next player: ' + (xIsNext ? 'X' : 'O');
+    }
+
+    function isTie(squares){
+        for (let i = 0; i < squares.length; i++) {
+            if (squares[i] == null) {
+                return false;
+            }
+        }
+        return true;
     }
 
     return(
@@ -99,5 +107,6 @@ function calculateWinner(squares) {
             return squares[a];
         }
     }
+
     return null;
 }

@@ -10,6 +10,6 @@ export const GameContainer = styled.div`
 `;
 
 export const GameBoard = styled.div`
-    height: 600px;
-    width: 600px;
+    height: 550px;
+    width: 550px;
 `;
